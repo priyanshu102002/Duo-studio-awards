@@ -1,1 +1,1 @@
-This is a Awarde Website.
+This is a Awarded Website.
