@@ -35,9 +35,9 @@ code();
 
 // cursor follower
 let cursor = document.querySelector("#cursor-circle");
-let main = document.querySelector("#main");
+
 function cursorFollower() {
-    
+    let main = document.querySelector("#main");
     let mainVideo = document.querySelector("#main-video")
 
     main.addEventListener("mousemove", function (event) {
