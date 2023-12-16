@@ -34,15 +34,16 @@ function code() {
 code();
 
 // cursor follower
+let cursor = document.querySelector("#cursor-circle");
+let main = document.querySelector("#main");
 function cursorFollower() {
-    let cursor = document.querySelector("#cursor-circle");
-    let main = document.querySelector("#main");
+    
     let mainVideo = document.querySelector("#main-video")
 
     main.addEventListener("mousemove", function (event) {
         gsap.to(cursor, {
-            x: event.clientX,
-            y: event.clientY,
+            x:event.clientX,
+            y:event.clientY,
         });
     });
 
@@ -133,10 +134,61 @@ let tl2 = gsap.timeline({
         start: "top -115%",
         end: "top -120%",
     },
-});
+},"abc");
 
 // for page2 color change
 tl2.to("#page2", {
     backgroundColor: "#FEFCFF",
     color: "#0F0D0D",
+},"abc");
+tl2.to("#page3", {
+    backgroundColor: "#FEFCFF",
+    color: "#0F0D0D",
+},"abc");
+
+// third timeline for page4
+let tl3 = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#page1 .title1",
+        scroller: "#main",
+        scrub: 3,
+        start: "top -280%",
+        end: "top -400%",
+    },
 });
+
+tl3.to("#page4",{
+    backgroundColor: "#0F0D0D",
+    color: "#FEFCFF",
+})
+
+tl3.to("#page3",{
+    backgroundColor: "#0F0D0D",
+    color: "#FEFCFF",
+})
+
+tl3.to("#page2",{
+    backgroundColor: "#0F0D0D",
+    color: "#FEFCFF",
+})
+
+// box animation
+
+document.querySelectorAll(".box").forEach((box) => {
+    box.addEventListener("mouseenter", function () {
+        let image = box.getAttribute("data-image")
+        
+        cursor.style.width = "300px"
+        cursor.style.height = "250px"
+        cursor.style.borderRadius = "0"
+        cursor.style.backgroundImage = `url(${image})`
+
+    });
+
+    box.addEventListener("mouseleave", function () {
+        cursor.style.width = "15px"
+        cursor.style.height = "15px"
+        cursor.style.borderRadius = "50%"
+        cursor.style.backgroundImage = "none"
+    });
+})
